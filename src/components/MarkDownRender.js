@@ -16,7 +16,7 @@ export default function MarkDownRender() {
   
   const renderers = {
     code: ({language, value}) => {
-      return <SyntaxHighlighter style={dark} language={language} children={value} className="syntax-highlighter" />
+      return <SyntaxHighlighter className="syntax-highlighter" style={dark} language={language} children={value}  />
     }
   }
   

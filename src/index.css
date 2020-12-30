@@ -191,7 +191,6 @@ box-shadow: 2px 2px 3px 0px rgba(224,224,224,1);
     box-shadow: 2px 2px 3px 0px rgba(224,224,224,1);
 }
 .editor-toolkit{
-    height: 5em;
     border-radius: 15px 15px 0px 0px;
     background-color: var(--color-theme-4);
 }
@@ -207,4 +206,29 @@ box-shadow: 2px 2px 3px 0px rgba(224,224,224,1);
     border: none;
     overflow-y: scroll;
     overflow: scroll;
+}
+.editor-toolkit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.buttons-editor-toolkit{
+    display: flex;
+    flex-flow: wrap;
+}
+.file-editor-toolkit{
+    display: flex;
+}
+.full-size-editor-toolkit{
+    display: flex;
+}
+.editor-toolkit-icon{
+    height: .8em;
+    padding: .5em;
+    margin: .4em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.editor-toolkit-icon:hover{
+    background-color: rgba(0, 0, 0, 0.029);
 }
