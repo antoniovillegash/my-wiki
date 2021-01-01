@@ -12,7 +12,7 @@ import ImageIcon from '../assets/icons/image-icon.svg';
 import FullSizeIcon from '../assets/icons/full-size-icon.svg';
 
 
-const NewEntry = () => {
+const Editor = () => {
     return (
         <div className="editor-main-container">
             <div className="editor-toolkit">
@@ -48,4 +48,4 @@ const NewEntry = () => {
     )
 }
 
-export default NewEntry
+export default Editor
