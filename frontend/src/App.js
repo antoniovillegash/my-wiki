@@ -14,6 +14,7 @@ function App() {
         <Route path="/" exact component={HomePage} />
         <Route path="/test" exact component={MarkDownRender} />
         <Route path="/new" exact component={NewEntry} />
+        <Route path="/editor" exact component={Editor} />
 
         {/*<Route exact path="/"  component={MainSection} />
          <Route exact path="/category" component={CategorySection} />

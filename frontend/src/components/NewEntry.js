@@ -1,11 +1,11 @@
 import { React, useState } from 'react'
 import PlusIcon from '../assets/icons/plus-icon.svg'
-
+import { useHistory } from "react-router-dom";
 
 
 const NewEntry = () => {
-   
-    let categories = ['linux', 'aws', 'nodejs', 'personal', 'my-docs-2', 'personal 2', 'my-docs 2'];
+    const history = useHistory();
+    let categories = ['linux', 'aws', 'nodejs', 'personal', 'my-docs-2', 'personal-3', 'my-docs-3'];
 
     const [selectedCategory, setSelectedCategory] = useState(-1);
 
@@ -25,10 +25,14 @@ const NewEntry = () => {
         });
     }
 
-    const validate = (e) => {
+    const createEntry = (e) => {
         e.preventDefault();
         let isValid = true;
-        let errors ={}
+        let errors ={};
+        let parsedTittle =''
+        let parsedCategory = ''
+
+        // Validations
         if(inputValue.tittle===''){
             isValid= false; 
             errors.tittle='Enter the tittle'
@@ -38,14 +42,32 @@ const NewEntry = () => {
             errors.category='Select or create a category'
         }
 
+        //Parse data
+        parsedTittle = inputValue.tittle.replaceAll(' ','-')
+
+        if(selectedCategory===-1){
+
+            parsedCategory = inputValue.category.replaceAll(' ','-')
+        }else{
+            parsedCategory = categories[selectedCategory]
+        }
+
+        
+
         setInputError(errors);
+        if(isValid===true){
+            
+            history.push("/editor/?category="+parsedCategory+'&tittle='+parsedTittle);
+        }
 
 
     }
+
+    
     return (
         <div className="create-new-entry-card">
 
-            <form className="new-entry-form" onSubmit={(e) => { validate(e) }}>
+            <form className="new-entry-form" onSubmit={(e) => { createEntry(e) }}>
 
                 <label htmlFor="tittle">Tittle:</label>
                 <input 
