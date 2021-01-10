@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import PlusIcon from '../assets/icons/plus-icon.svg'
 import { useHistory } from "react-router-dom";
+import Axios from 'axios';
 
 
 const NewEntry = () => {
@@ -56,8 +57,26 @@ const NewEntry = () => {
 
         setInputError(errors);
         if(isValid===true){
+            console.log(process.env.REACT_APP_BACKEND_URL+'/api/notes/create')
+            Axios.post(process.env.REACT_APP_BACKEND_URL+'/api/notes/create',
+             {
+                  'tittle':parsedTittle,
+                  'category':parsedCategory 
+                })
+            .then(res => {
+                
+                if(res.status === 201){
+                    history.push("/editor/?category="+parsedCategory+'&tittle='+parsedTittle);
+                }else{
+
+                }
+            })
+            .catch(error=>{
+                console.log(error.response.data.message)
+                setInputError( error.response.data.message)
+            })
             
-            history.push("/editor/?category="+parsedCategory+'&tittle='+parsedTittle);
+            
         }
 
 
